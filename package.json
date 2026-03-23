@@ -1,0 +1,12 @@
+{
+    "name": "reactivity-examples-monorepo",
+    "private": true,
+    "type": "module",
+    "pnpm": {
+    },
+    "engines": {
+        "pnpm": ">=6"
+    },
+    "scripts": {
+    }
+}
