@@ -1,5 +1,5 @@
 {
-    "name": "jsondiff",
+    "name": "examples",
     "version": "0.0.0",
     "description": "Stress-free JSON diff tool",
     "type": "module",

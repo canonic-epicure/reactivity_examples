@@ -1,0 +1,81 @@
+@use '../resources/styling/palette.scss' as *;
+
+// Sort button — поменяйте значения здесь (можно подставлять имена из palette.scss: $blue-sapphire, $viridian-green, …)
+$sorting-sort-btn-bg: $middle-blue-green !default;
+$sorting-sort-btn-color: rgba(255, 255, 255, 0.96) !default;
+$sorting-sort-btn-border: $blue-sapphire !default;
+
+.sorting-application {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    min-height: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.sorting-application__signals {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.sorting-application__toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.sorting-sort-btn {
+    font-size: medium;
+    padding: 0.55em 1.85em;
+    border: 2px solid $sorting-sort-btn-border;
+    border-radius: 0.4rem;
+    background: $sorting-sort-btn-bg;
+    color: $sorting-sort-btn-color;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 6px rgba($rich-black-fogra-29, 0.12);
+
+    &:hover {
+        filter: brightness(1.06);
+    }
+
+    &:active {
+        filter: brightness(0.94);
+        box-shadow: 0 1px 3px rgba($rich-black-fogra-29, 0.15);
+    }
+}
+
+.signal_box {
+    flex: 0 0 auto;
+    min-width: 1.5ch;
+    padding: 1rem 1.75rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    border: 3px solid $blue-sapphire;
+    border-radius: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrainsMono Light", monospace;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 8px rgba($rich-black-fogra-29, 0.08);
+}

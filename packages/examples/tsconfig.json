@@ -28,6 +28,7 @@
 
     "include" : [
         "index.ts",
+        "sorting.ts",
         "bin/**/*.ts",
         "scripts/**/*.ts",
         "src/**/*.ts",

@@ -3,6 +3,9 @@
     "private": true,
     "type": "module",
     "pnpm": {
+        "overrides": {
+            "examples>@bryntum/siesta": "workspace:*"
+        }
     },
     "engines": {
         "pnpm": ">=6"
