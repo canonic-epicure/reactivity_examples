@@ -29,6 +29,7 @@
     "include" : [
         "index.ts",
         "sorting.ts",
+        "game_of_life.ts",
         "bin/**/*.ts",
         "scripts/**/*.ts",
         "src/**/*.ts",
