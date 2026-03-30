@@ -22,7 +22,7 @@ Also, this feature enables a whole new class of use cases - see below.
 
 # Reactivity as STM
 
-With this feature, one can treat a reactive system as Software Transactional Memory (sort of). A better scientific term probably exists; suggest yours. Here is what it means in practice.
+With this feature, one can treat a reactive system as [Software Transactional Memory](https://en.wikipedia.org/wiki/Software_transactional_memory) (sort of). A better scientific term probably exists; suggest yours. Here is what it means in practice.
 
 One can specify a set of dynamic rules that the state of the system should conform to, and reactivity will take care of making sure those rules are satisfied. These rules can be truly dynamic, i.e. they can depend on the state itself. Calculation functions will be executed repeatedly, pushing the system toward a stable state.
 
@@ -37,9 +37,27 @@ The "sorted" contract can be defined by the following calculation rule, which sh
 
 This simple rule will sort the array. The values will be continuously swapped until the order is established.
 
+<iframe
+    src="https://canonic-epicure.github.io/reactivity_examples/dist_sorting/sorting.html"
+    title="Reactive sorting example"
+    loading="lazy"
+    style="display:block; width:100%; height:20rem; border:0; background:transparent;"
+></iframe>
+
+
+
 ## Game of Life
 
 Another example is the "Game of Life", a cellular automaton invented by John Horton Conway in 1970. It defines a set of simple rules that are the same for every cell on a rectangular field. Every cell on the field can be modeled as a reactive calculation.
+
+<iframe
+    src="https://canonic-epicure.github.io/reactivity_examples/dist_game_of_life/game_of_life.html"
+    title="Reactive game of life example"
+    loading="lazy"
+    style="display:block; width:100%; height:32rem; border:0; background:transparent;"
+></iframe>
+
+
 
 # Observations
 
