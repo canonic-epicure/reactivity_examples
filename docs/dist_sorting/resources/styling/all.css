@@ -1,0 +1,295 @@
+@import '../fonts/fontawesome5/css/all.css';
+/* SCSS RGB */
+button.fa-btn:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 0.3em;
+}
+
+button.far-btn:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  padding-right: 0.3em;
+}
+
+.jd-application {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.jd-application .jd-header {
+  padding: 0.5em;
+}
+.jd-application .jd-header .jd-invalid-json-notice {
+  padding-left: 2ch;
+  color: rgb(202, 103, 2);
+  font-weight: bolder;
+}
+.jd-application .jd-content {
+  flex: 1;
+  display: flex;
+  padding: 0.5em;
+}
+.jd-application .jd-content .jd-content-left, .jd-application .jd-content .jd-content-right {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+.jd-application .jd-content .jd-content-left textarea, .jd-application .jd-content .jd-content-right textarea {
+  font-family: "JetBrainsMono Light", "monospace";
+  flex: 1;
+  resize: none;
+  outline-style: none;
+}
+.jd-application .jd-content .jd-content-left textarea:focus, .jd-application .jd-content .jd-content-right textarea:focus {
+  border-style: dashed;
+}
+.jd-application .jd-content .jd-json-error-indicator {
+  position: absolute;
+  width: 3ch;
+  height: 3ch;
+  border: 1px solid rgb(187, 62, 3);
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  animation: error-indicator 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+}
+@keyframes error-indicator {
+  from {
+    border-color: rgba(202, 103, 2, 0.4);
+    border-width: 1px;
+  }
+  to {
+    border-color: transparent;
+    border-width: 1.5ch;
+  }
+}
+.jd-application .jd-footer {
+  padding: 0.3em;
+  font-size: smaller;
+  display: flex;
+}
+.jd-application .jd-footer .jd-footer-copyright {
+  text-align: right;
+}
+.btn-sample-data {
+  font-size: medium;
+  padding: 0.5em;
+  float: right;
+}
+
+.btn-diff, .btn-text {
+  font-size: medium;
+  padding: 0.5em;
+}
+.btn-diff:before, .btn-text:before {
+  color: rgb(10, 147, 150);
+}
+
+.sorting-application {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  min-height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.sorting-application__signals {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.sorting-application__toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.sorting-sort-btn {
+  font-size: medium;
+  padding: 0.55em 1.85em;
+  border: 2px solid rgb(0, 95, 115);
+  border-radius: 0.4rem;
+  background: rgb(148, 210, 189);
+  color: rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 6px rgba(0, 18, 25, 0.12);
+}
+.sorting-sort-btn:hover {
+  filter: brightness(1.06);
+}
+.sorting-sort-btn:active {
+  filter: brightness(0.94);
+  box-shadow: 0 1px 3px rgba(0, 18, 25, 0.15);
+}
+
+.signal_box {
+  flex: 0 0 auto;
+  min-width: 0ch;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  border: 3px solid rgb(0, 95, 115);
+  border-radius: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrainsMono Light", monospace;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(0, 18, 25, 0.08);
+}
+
+.gol-application {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  min-height: 100%;
+  width: 100%;
+  padding: 1rem 1.5rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.gol-lede {
+  max-width: 52rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgb(0, 45.936, 63.8);
+}
+.gol-lede strong {
+  font-weight: 600;
+}
+
+.gol-code {
+  font-family: "JetBrainsMono Light", monospace;
+  font-size: 0.88em;
+  padding: 0.1em 0.35em;
+  border-radius: 0.2rem;
+  background: rgba(0, 95, 115, 0.08);
+}
+
+.gol-grid {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 0.5rem;
+  background: rgba(0, 18, 25, 0.04);
+  border-radius: 0.35rem;
+  border: 1px solid rgba(0, 95, 115, 0.25);
+}
+
+.gol-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1px;
+}
+
+.gol-cell {
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 18, 25, 0.12);
+}
+
+.gol-cell--alive {
+  background: rgb(148, 210, 189);
+  border-color: rgb(0, 95, 115);
+}
+
+.gol-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.gol-btn {
+  font-size: medium;
+  padding: 0.55em 1.85em;
+  border: 2px solid rgb(0, 95, 115);
+  border-radius: 0.4rem;
+  background: rgb(10, 147, 150);
+  color: rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 6px rgba(0, 18, 25, 0.12);
+}
+.gol-btn:hover {
+  filter: brightness(1.06);
+}
+.gol-btn:active {
+  filter: brightness(0.94);
+  box-shadow: 0 1px 3px rgba(0, 18, 25, 0.15);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: "Lato Light";
+  color: rgb(0, 18, 25);
+}
+
+@font-face {
+  font-family: "JetBrainsMono Light";
+  src: url(../fonts/jetbrains_mono/JetBrainsMono-Light.woff2);
+}
+@font-face {
+  font-family: "Lato Light";
+  src: url(../fonts/lato/Lato-Light.ttf);
+}
+@font-face {
+  font-family: "OpenSans Light";
+  src: url(../fonts/opensans/OpenSans-Light.ttf);
+}
+::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/*# sourceMappingURL=all.css.map */

@@ -10,18 +10,17 @@ DOCS_DIR="${REPO_ROOT}/docs"
 build_demo() {
     local html_name="$1"
     local dist_dir="$2"
+    local dist_path="${EXAMPLES_DIR}/${dist_dir}"
 
-    cp "${EXAMPLES_DIR}/${html_name}" "${EXAMPLES_DIR}/${dist_dir}/${html_name}"
-}
+    mkdir -p "${dist_path}/resources/styling"
 
-publish_shared_resources() {
-    mkdir -p "${DOCS_DIR}/resources/styling"
+    cp "${EXAMPLES_DIR}/${html_name}" "${dist_path}/${html_name}"
 
-    npx sass resources/styling/all.scss "${DOCS_DIR}/resources/styling/all.css"
+    npx sass resources/styling/all.scss "${dist_path}/resources/styling/all.css"
 
-    rm -rf "${DOCS_DIR}/resources/fonts"
-    mkdir -p "${DOCS_DIR}/resources"
-    cp -a "${EXAMPLES_DIR}/resources/fonts" "${DOCS_DIR}/resources/"
+    rm -rf "${dist_path}/resources/fonts"
+    mkdir -p "${dist_path}/resources"
+    cp -a "${EXAMPLES_DIR}/resources/fonts" "${dist_path}/resources/"
 }
 
 copy_to_docs() {
@@ -56,7 +55,6 @@ echo "Publishing into docs/..."
 mkdir -p "${DOCS_DIR}"
 copy_to_docs "dist_sorting" "dist_sorting"
 copy_to_docs "dist_game_of_life" "dist_game_of_life"
-publish_shared_resources
 
 touch "${DOCS_DIR}/.nojekyll"
 
@@ -65,7 +63,6 @@ echo "Done."
 echo "GitHub Pages-ready files:"
 echo "  ${DOCS_DIR}/dist_sorting/"
 echo "  ${DOCS_DIR}/dist_game_of_life/"
-echo "  ${DOCS_DIR}/resources/"
 echo
 echo "If GitHub Pages is configured to serve from the 'master' branch /docs folder,"
 echo "the demos will be available at:"
