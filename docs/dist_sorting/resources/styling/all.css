@@ -262,32 +262,47 @@ button.far-btn:before {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.5rem;
-  min-height: 100%;
+  gap: 0.6rem;
   width: 100%;
-  padding: 1.5rem;
+  padding: 0.75rem;
   box-sizing: border-box;
 }
 
 .quoting-application__fields {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
   width: 100%;
-  max-width: 56rem;
+  max-width: 48rem;
+}
+@media (max-width: 480px) {
+  .quoting-application__fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .quoting-application__resolution {
   min-height: 1.5em;
-  font-size: 1.05rem;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  text-align: center;
   color: rgb(0, 70.38, 97.75);
+}
+
+.quoting-application__formula {
+  min-height: 1.3em;
+  font-size: 0.85rem;
+  font-family: "JetBrainsMono Light", monospace;
+  text-align: center;
+  color: rgb(10, 147, 150);
 }
 
 .quoting-field {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 0.75rem 1rem;
+  gap: 0.3rem;
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
   border: 3px solid rgb(0, 95, 115);
   border-radius: 0.35rem;
   background: rgba(255, 255, 255, 0.85);
@@ -315,9 +330,10 @@ button.far-btn:before {
 
 .quoting-field__input {
   flex: 1 1 auto;
+  width: 100%;
   min-width: 0;
-  padding: 0.35rem 0.5rem;
-  font-size: 1.25rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 1.1rem;
   font-family: "JetBrainsMono Light", monospace;
   border: 1px solid rgb(133.75, 221.05, 255);
   border-radius: 0.25rem;
@@ -338,7 +354,7 @@ button.far-btn:before {
 }
 
 .quoting-field__suffix {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .quoting-field__note {

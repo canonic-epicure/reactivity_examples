@@ -99,7 +99,7 @@ export class Application extends Component {
             <div class="quoting-field__note">
                 {
                     () => {
-                        if (this.isCalculated(config)) return `calculated: ${ config.formula }`
+                        if (this.isCalculated(config)) return 'calculated'
                         if (this.lastEdited === config.name) return 'edited'
 
                         return ''
@@ -126,6 +126,15 @@ export class Application extends Component {
                         return edited
                             ? `${ edited.label } changed → ${ calculated.label } recalculated`
                             : `${ calculated.label } is calculated`
+                    }
+                }
+            </div>
+            <div class="quoting-application__formula">
+                {
+                    () => {
+                        const calculated    = quoteFields.find(config => this.isCalculated(config))
+
+                        return calculated ? `${ calculated.name } = ${ calculated.formula }` : ''
                     }
                 }
             </div>

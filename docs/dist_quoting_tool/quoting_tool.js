@@ -7212,7 +7212,7 @@ class Application extends Component {
                 config.suffix ? ChronoGraphJSX.createElement("span", { class: "quoting-field__suffix" }, config.suffix) : null),
             ChronoGraphJSX.createElement("div", { class: "quoting-field__note" }, () => {
                 if (this.isCalculated(config))
-                    return `calculated: ${config.formula}`;
+                    return 'calculated';
                 if (this.lastEdited === config.name)
                     return 'edited';
                 return '';
@@ -7229,6 +7229,10 @@ class Application extends Component {
                 return edited
                     ? `${edited.label} changed → ${calculated.label} recalculated`
                     : `${calculated.label} is calculated`;
+            }),
+            ChronoGraphJSX.createElement("div", { class: "quoting-application__formula" }, () => {
+                const calculated = quoteFields.find(config => this.isCalculated(config));
+                return calculated ? `${calculated.name} = ${calculated.formula}` : '';
             }));
     }
 }
