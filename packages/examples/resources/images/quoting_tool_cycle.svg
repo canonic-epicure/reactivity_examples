@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="440" viewBox="0 0 680 440" font-family="Lato, 'Helvetica Neue', Arial, sans-serif">
+    <title>Quoting tool: circular dependency between quantity and amount</title>
+
+    <defs>
+        <marker id="arrow-amount" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A9396"/>
+        </marker>
+        <marker id="arrow-quantity" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#CA6702"/>
+        </marker>
+    </defs>
+
+    <rect width="680" height="440" fill="#FFFFFF"/>
+
+    <!-- edges of the `amount` formula: amount reads price, quantity, discount -->
+    <g stroke="#0A9396" stroke-width="2.5" fill="none" marker-end="url(#arrow-amount)">
+        <line x1="215" y1="280" x2="423" y2="280"/>
+        <line x1="215" y1="106" x2="423" y2="264"/>
+        <path d="M 470 118 Q 430 185 470 250"/>
+    </g>
+
+    <!-- edges of the `quantity` formula: quantity reads price, amount, discount -->
+    <g stroke="#CA6702" stroke-width="2.5" fill="none" marker-end="url(#arrow-quantity)" stroke-dasharray="7 5">
+        <line x1="215" y1="90" x2="423" y2="90"/>
+        <line x1="215" y1="264" x2="423" y2="106"/>
+        <path d="M 530 252 Q 570 185 530 120"/>
+    </g>
+
+    <!-- cycle label -->
+    <text x="580" y="191" font-size="16" fill="#9B2226" font-style="italic">↻ cycle</text>
+
+    <!-- nodes -->
+    <g font-size="20" text-anchor="middle" fill="#001219">
+        <rect x="65" y="62" width="150" height="56" rx="28" fill="#FFFFFF" stroke="#005F73" stroke-width="3"/>
+        <text x="140" y="97">price</text>
+
+        <rect x="65" y="252" width="150" height="56" rx="28" fill="#FFFFFF" stroke="#005F73" stroke-width="3"/>
+        <text x="140" y="287">discount</text>
+
+        <rect x="425" y="62" width="150" height="56" rx="28" fill="#FDF3E3" stroke="#CA6702" stroke-width="3"/>
+        <text x="500" y="97">quantity</text>
+
+        <rect x="425" y="252" width="150" height="56" rx="28" fill="#E6F4F1" stroke="#0A9396" stroke-width="3"/>
+        <text x="500" y="287">amount</text>
+    </g>
+
+    <!-- formulas -->
+    <g font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="14">
+        <line x1="40" y1="358" x2="72" y2="358" stroke="#0A9396" stroke-width="2.5"/>
+        <text x="84" y="363" fill="#0A9396">amount   = price × quantity × (1 − discount / 100)</text>
+
+        <line x1="40" y1="388" x2="72" y2="388" stroke="#CA6702" stroke-width="2.5" stroke-dasharray="7 5"/>
+        <text x="84" y="393" fill="#CA6702">quantity = amount / (price × (1 − discount / 100))</text>
+    </g>
+
+    <text x="40" y="424" font-size="13" fill="#5C6B70">A → B : field B reads field A</text>
+</svg>

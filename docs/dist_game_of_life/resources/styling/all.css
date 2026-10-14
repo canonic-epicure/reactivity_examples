@@ -257,6 +257,97 @@ button.far-btn:before {
   box-shadow: 0 1px 3px rgba(0, 18, 25, 0.15);
 }
 
+.quoting-application {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  min-height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.quoting-application__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 56rem;
+}
+
+.quoting-application__resolution {
+  min-height: 1.5em;
+  font-size: 1.05rem;
+  color: rgb(0, 70.38, 97.75);
+}
+
+.quoting-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  border: 3px solid rgb(0, 95, 115);
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(0, 18, 25, 0.08);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.quoting-field--edited {
+  border-color: rgb(238, 155, 0);
+}
+.quoting-field--calculated {
+  border-color: rgb(10, 147, 150);
+  background: rgba(148, 210, 189, 0.25);
+}
+
+.quoting-field__label {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.quoting-field__control {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.quoting-field__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.35rem 0.5rem;
+  font-size: 1.25rem;
+  font-family: "JetBrainsMono Light", monospace;
+  border: 1px solid rgb(133.75, 221.05, 255);
+  border-radius: 0.25rem;
+  background: #fff;
+  color: rgb(0, 18, 25);
+}
+.quoting-field__input:focus {
+  outline: 2px solid rgb(238, 155, 0);
+  outline-offset: 0;
+}
+.quoting-field__input[readonly] {
+  background: transparent;
+  border-color: transparent;
+  cursor: default;
+}
+.quoting-field__input[readonly]:focus {
+  outline: none;
+}
+
+.quoting-field__suffix {
+  font-size: 1.1rem;
+}
+
+.quoting-field__note {
+  min-height: 1.2em;
+  font-size: 0.8rem;
+  font-family: "JetBrainsMono Light", monospace;
+  color: rgb(0, 122.76, 170.5);
+}
+
 html, body {
   width: 100%;
   height: 100%;

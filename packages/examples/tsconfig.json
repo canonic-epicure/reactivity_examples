@@ -30,6 +30,8 @@
         "index.ts",
         "sorting.ts",
         "game_of_life.ts",
+        "quoting_tool.ts",
+        "quoting_tool_simple.ts",
         "bin/**/*.ts",
         "scripts/**/*.ts",
         "src/**/*.ts",

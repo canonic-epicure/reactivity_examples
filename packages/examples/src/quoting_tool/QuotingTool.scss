@@ -1,0 +1,101 @@
+@use "sass:color";
+@use '../../resources/styling/palette.scss' as *;
+
+$quoting-edited-color: $gamboge !default;
+$quoting-calculated-color: $viridian-green !default;
+
+.quoting-application {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    min-height: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.quoting-application__fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 56rem;
+}
+
+.quoting-application__resolution {
+    min-height: 1.5em;
+    font-size: 1.05rem;
+    color: color.scale($rich-black-fogra-29, $lightness: 15%);
+}
+
+.quoting-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    border: 3px solid $blue-sapphire;
+    border-radius: 0.35rem;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 8px rgba($rich-black-fogra-29, 0.08);
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &--edited {
+        border-color: $quoting-edited-color;
+    }
+
+    &--calculated {
+        border-color: $quoting-calculated-color;
+        background: rgba($middle-blue-green, 0.25);
+    }
+}
+
+.quoting-field__label {
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+}
+
+.quoting-field__control {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.quoting-field__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.35rem 0.5rem;
+    font-size: 1.25rem;
+    font-family: "JetBrainsMono Light", monospace;
+    border: 1px solid color.scale($rich-black-fogra-29, $lightness: 75%);
+    border-radius: 0.25rem;
+    background: #fff;
+    color: $rich-black-fogra-29;
+
+    &:focus {
+        outline: 2px solid $quoting-edited-color;
+        outline-offset: 0;
+    }
+
+    &[readonly] {
+        background: transparent;
+        border-color: transparent;
+        cursor: default;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.quoting-field__suffix {
+    font-size: 1.1rem;
+}
+
+.quoting-field__note {
+    min-height: 1.2em;
+    font-size: 0.8rem;
+    font-family: "JetBrainsMono Light", monospace;
+    color: color.scale($rich-black-fogra-29, $lightness: 30%);
+}

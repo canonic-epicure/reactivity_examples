@@ -5873,11 +5873,13 @@ class ElementReactivity extends Mixin([], (base) => class ElementReactivity exte
         this.styleAttributeSources = undefined;
         this.classActivators = undefined;
         this.styleProperties = undefined;
+        this.otherProperties = undefined;
         this.reactiveChildren = undefined;
         this.$classAttributeBox = undefined;
         this.$styleAttributeBox = undefined;
         this.$classActivatorBoxes = undefined;
         this.$stylePropertiesBoxes = undefined;
+        this.$otherPropertiesBoxes = undefined;
         this.$effect = undefined;
     }
     get el() {
@@ -5916,6 +5918,11 @@ class ElementReactivity extends Mixin([], (base) => class ElementReactivity exte
         if (!this.styleProperties)
             this.styleProperties = {};
         this.styleProperties[propertyName] = source;
+    }
+    addOtherProperty(propertyName, source) {
+        if (!this.otherProperties)
+            this.otherProperties = {};
+        this.otherProperties[propertyName] = source;
     }
     adoptReactiveProperties(categorizedProperties) {
         categorizedProperties.events.forEach(entry => this.addEventListener(entry));
@@ -6004,6 +6011,24 @@ class ElementReactivity extends Mixin([], (base) => class ElementReactivity exte
         });
         return this.$stylePropertiesBoxes = reactive;
     }
+    get otherPropertiesBoxes() {
+        if (this.$otherPropertiesBoxes !== undefined)
+            return this.$otherPropertiesBoxes;
+        const reactive = [];
+        Object.entries(this.otherProperties || []).forEach(([prop, source]) => {
+            if (!isReactive(source)) {
+                setProperty(this.el, prop, source);
+            }
+            else {
+                const box = CalculableBox.new({
+                    calculation: () => resolvePropertySource(source)
+                });
+                box.commitValueOptimisticHook.on((self, newValue, oldValue) => setProperty(this.el, prop, newValue));
+                reactive.push(box);
+            }
+        });
+        return this.$otherPropertiesBoxes = reactive;
+    }
     get effect() {
         if (this.$effect !== undefined)
             return this.$effect;
@@ -6025,7 +6050,8 @@ class ElementReactivity extends Mixin([], (base) => class ElementReactivity exte
                     this.classAttributeBox,
                     this.styleAttributeBox,
                     ...this.classActivatorBoxes,
-                    ...this.stylePropertiesBoxes
+                    ...this.stylePropertiesBoxes,
+                    ...this.otherPropertiesBoxes
                 ].forEach(box => box && box.read());
                 if (this.reactiveChildren) {
                     const children = resolveElementSource(this.reactiveChildren);
@@ -6048,7 +6074,9 @@ class ElementReactivity extends Mixin([], (base) => class ElementReactivity exte
         element.reactivity = reactivity;
         reactivity.el = element;
         reactivity.adoptReactiveProperties(categorizedProperties);
-        categorizedProperties.otherProperties.forEach(([propertyName, value]) => setProperty(element, propertyName, value));
+        categorizedProperties.otherProperties.forEach(([propertyName, value]) => isReactive(value)
+            ? reactivity.addOtherProperty(propertyName, value)
+            : setProperty(element, propertyName, value));
         if (normalizedChildren.hasReactivity) {
             reactivity.reactiveChildren = normalizedChildren.normalized;
         }

@@ -34,7 +34,7 @@ copy_to_docs() {
 
 cd "${EXAMPLES_DIR}"
 
-rm -rf "${EXAMPLES_DIR}/dist_sorting" "${EXAMPLES_DIR}/dist_game_of_life" "${DOCS_DIR}"
+rm -rf "${EXAMPLES_DIR}/dist_sorting" "${EXAMPLES_DIR}/dist_game_of_life" "${EXAMPLES_DIR}/dist_quoting_tool" "${EXAMPLES_DIR}/dist_quoting_tool_simple" "${DOCS_DIR}"
 
 echo "Building TypeScript..."
 npx tsc
@@ -45,16 +45,30 @@ npx rollup -c rollup.config.sorting.js
 echo "Bundling game_of_life..."
 npx rollup -c rollup.config.game_of_life.js
 
+echo "Bundling quoting_tool..."
+npx rollup -c rollup.config.quoting_tool.js
+
+echo "Bundling quoting_tool_simple..."
+npx rollup -c rollup.config.quoting_tool_simple.js
+
 echo "Preparing dist_sorting..."
 build_demo "sorting.html" "dist_sorting"
 
 echo "Preparing dist_game_of_life..."
 build_demo "game_of_life.html" "dist_game_of_life"
 
+echo "Preparing dist_quoting_tool..."
+build_demo "quoting_tool.html" "dist_quoting_tool"
+
+echo "Preparing dist_quoting_tool_simple..."
+build_demo "quoting_tool_simple.html" "dist_quoting_tool_simple"
+
 echo "Publishing into docs/..."
 mkdir -p "${DOCS_DIR}"
 copy_to_docs "dist_sorting" "dist_sorting"
 copy_to_docs "dist_game_of_life" "dist_game_of_life"
+copy_to_docs "dist_quoting_tool" "dist_quoting_tool"
+copy_to_docs "dist_quoting_tool_simple" "dist_quoting_tool_simple"
 
 touch "${DOCS_DIR}/.nojekyll"
 
@@ -63,8 +77,12 @@ echo "Done."
 echo "GitHub Pages-ready files:"
 echo "  ${DOCS_DIR}/dist_sorting/"
 echo "  ${DOCS_DIR}/dist_game_of_life/"
+echo "  ${DOCS_DIR}/dist_quoting_tool/"
+echo "  ${DOCS_DIR}/dist_quoting_tool_simple/"
 echo
 echo "If GitHub Pages is configured to serve from the 'master' branch /docs folder,"
 echo "the demos will be available at:"
 echo "  ./dist_sorting/sorting.html"
 echo "  ./dist_game_of_life/game_of_life.html"
+echo "  ./dist_quoting_tool/quoting_tool.html"
+echo "  ./dist_quoting_tool_simple/quoting_tool_simple.html"
